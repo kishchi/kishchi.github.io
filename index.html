@@ -1,158 +1,209 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>KISHPAGE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Access all my Telegram channels from one place. Join now!">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KISHPAGE</title>
+<meta name="description" content="Access all my Telegram channels in one place.">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(to right, #f5f5f5, #e8e8e8);
-            text-align: center;
-        }
+<style>
+:root {
+    --primary: orange;
+    --dark-bg: #121212;
+    --light-bg: #f4f4f4;
+    --card-dark: rgba(255,255,255,0.05);
+    --card-light: white;
+    --text-dark: white;
+    --text-light: #111;
+}
 
-        header {
-            background-color: orange;
-            padding: 30px 20px;
-        }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background 0.4s, color 0.4s;
+    background: var(--light-bg);
+    color: var(--text-light);
+    text-align: center;
+}
 
-        header img {
-            width: 180px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-        }
+.dark-mode {
+    background: var(--dark-bg);
+    color: var(--text-dark);
+}
 
-        header h1 {
-            margin: 10px 0 5px;
-        }
+header {
+    padding: 40px 20px;
+}
 
-        header p {
-            margin: 0;
-            font-size: 15px;
-        }
+header img {
+    width: 170px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
 
-        .container {
-            padding: 20px;
-        }
+h1 {
+    margin: 15px 0 5px;
+}
 
-        .card {
-            background: white;
-            margin: 20px auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--primary);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+.container {
+    padding: 20px;
+}
 
-        .card img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 10px;
-        }
+.card {
+    backdrop-filter: blur(10px);
+    background: var(--card-light);
+    margin: 25px auto;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards;
+}
 
-        .card h2 {
-            margin-top: 15px;
-        }
+.dark-mode .card {
+    background: var(--card-dark);
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 22px;
-            background-color: orange;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
+.card img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 12px;
+}
 
-        .button:hover {
-            background-color: darkorange;
-            transform: scale(1.05);
-        }
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: var(--primary);
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
 
-        footer {
-            margin: 40px 15px;
-            font-size: 14px;
-            color: #444;
-        }
+.button:hover {
+    transform: scale(1.08);
+    background: darkorange;
+}
 
-        @media (max-width: 500px) {
-            header img {
-                width: 140px;
-            }
-        }
-    </style>
+.counter {
+    margin-top: 40px;
+}
+
+footer {
+    margin: 40px 10px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Telegram Button */
+.telegram-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0088cc;
+    color: white;
+    padding: 15px 18px;
+    border-radius: 50px;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.telegram-float:hover {
+    transform: scale(1.1);
+}
+</style>
 </head>
 
 <body>
 
+<button class="toggle-btn" onclick="toggleMode()">🌙</button>
+
 <header>
-    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/139873_original_3240x5760.jpg" 
-         alt="Kish Page Logo" loading="lazy">
-    <h1>Welcome to the Kish Page</h1>
-    <p>Access all my Telegram channels from one place</p>
+    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/139873_original_3240x5760.jpg" alt="Kish Logo">
+    <h1>Welcome to Kish Page</h1>
+    <p>All my Telegram channels in one place</p>
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <h2>🎬 THE LAST OF US</h2>
-        <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2023-01-09_15-18-35.jpg" 
-             alt="The Last of Us" loading="lazy">
-        <br>
-        <a class="button" href="https://t.me/LOUTVS/" target="_blank">
-            Join Channel
-        </a>
-    </div>
+<div class="card">
+    <h2>🎬 THE LAST OF US</h2>
+    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2023-01-09_15-18-35.jpg" alt="">
+    <br>
+    <a class="button" href="https://t.me/LOUTVS/" target="_blank">Join Channel</a>
+</div>
 
-    <div class="card">
-        <h2>📷 KISH WALLPAPERS</h2>
-        <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-12-24_11-55-10.jpg" 
-             alt="Kish Wallpapers" loading="lazy">
-        <br>
-        <a class="button" href="https://t.me/wallcrafttim/" target="_blank">
-            Join Channel
-        </a>
-    </div>
+<div class="card">
+    <h2>📷 KISH WALLPAPERS</h2>
+    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-12-24_11-55-10.jpg" alt="">
+    <br>
+    <a class="button" href="https://t.me/wallcrafttim/" target="_blank">Join Channel</a>
+</div>
 
-    <div class="card">
-        <h2>🈲 Avatar: The Legend of Genji</h2>
-        <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-04-12_19-21-42.jpg" 
-             alt="Legend of Genji" loading="lazy">
-        <br>
-        <a class="button" href="https://t.me/LOGNAU/" target="_blank">
-            Join Channel
-        </a>
-    </div>
+<div class="card">
+    <h2>🈲 Avatar: The Legend of Genji</h2>
+    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-04-12_19-21-42.jpg" alt="">
+    <br>
+    <a class="button" href="https://t.me/LOGNAU/" target="_blank">Join Channel</a>
+</div>
 
-    <div class="card">
-        <h2>🎥 The Movie Request Group</h2>
-        <img src="1771251355020.png" 
-             alt="The Movie Request Group" loading="lazy">
-        <br>
-        <a class="button" href="https://t.me/movierequestsg" target="_blank">
-            Join Group
-        </a>
-    </div>
+<div class="card">
+    <h2>🎥 The Movie Request Group</h2>
+    <img src="1771251355020.png" alt="">
+    <br>
+    <a class="button" href="https://t.me/movierequestsg" target="_blank">Join Group</a>
+</div>
+
+<!-- Visitor Counter -->
+<div class="counter">
+    <p><strong>Visitors:</strong></p>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=92837465&style=0001&nbdigits=6&type=page&initCount=0" 
+         title="Visitor Counter" alt="Visitor Counter" border="0"/>
+</div>
 
 </div>
 
 <footer>
-    <p>
-        Thanks for visiting 🙏<br>
-        Remember to join and share my channels with others!
-    </p>
+    <p>Thanks for visiting 🙏<br>Remember to share with others!</p>
 </footer>
+
+<!-- Floating Telegram Button -->
+<a href="https://t.me/movierequestsg" target="_blank" class="telegram-float">
+    💬 Chat on Telegram
+</a>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
 
 </body>
 </html>
