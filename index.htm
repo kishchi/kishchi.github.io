@@ -4,68 +4,92 @@
     <meta charset="UTF-8">
     <title>KISHPAGE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access all my Telegram channels from one place. Join now!">
 
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #f5f5f5, #e8e8e8);
             text-align: center;
         }
 
         header {
             background-color: orange;
-            padding: 20px;
-            color: #000;
+            padding: 30px 20px;
         }
 
         header img {
-            width: 200px;
-            border-radius: 10px;
+            width: 180px;
+            border-radius: 12px;
             margin-bottom: 10px;
         }
 
-        section {
-            background: #ffffff;
+        header h1 {
+            margin: 10px 0 5px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
             margin: 20px auto;
             padding: 20px;
             width: 90%;
             max-width: 500px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        section img {
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
             width: 100%;
             max-width: 250px;
             border-radius: 10px;
         }
 
-        h2 {
+        .card h2 {
             margin-top: 15px;
         }
 
-        a.button {
+        .button {
             display: inline-block;
             margin-top: 15px;
-            padding: 12px 20px;
+            padding: 12px 22px;
             background-color: orange;
             color: black;
             text-decoration: none;
             font-weight: bold;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        a.button:hover {
+        .button:hover {
             background-color: darkorange;
+            transform: scale(1.05);
         }
 
         footer {
-            margin: 30px 10px;
-            color: #333;
+            margin: 40px 15px;
             font-size: 14px;
+            color: #444;
+        }
+
+        @media (max-width: 500px) {
+            header img {
+                width: 140px;
+            }
         }
     </style>
 </head>
@@ -74,44 +98,58 @@
 
 <header>
     <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/139873_original_3240x5760.jpg" 
-         alt="Kish Page Logo">
+         alt="Kish Page Logo" loading="lazy">
     <h1>Welcome to the Kish Page</h1>
     <p>Access all my Telegram channels from one place</p>
 </header>
 
-<section>
-    <h2>THE LAST OF US Channel</h2>
-    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2023-01-09_15-18-35.jpg" 
-         alt="The Last of Us">
-    <br>
-    <a class="button" href="https://t.me/LOUTVS/" target="_blank">
-        THE LAST OF US (Season 1)
-    </a>
-</section>
+<div class="container">
 
-<section>
-    <h2>KISH WALLPAPERS 📷</h2>
-    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-12-24_11-55-10.jpg" 
-         alt="Kish Wallpapers">
-    <br>
-    <a class="button" href="https://t.me/wallcrafttim/" target="_blank">
-        Join Wallpapers Channel
-    </a>
-</section>
+    <div class="card">
+        <h2>🎬 THE LAST OF US</h2>
+        <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2023-01-09_15-18-35.jpg" 
+             alt="The Last of Us" loading="lazy">
+        <br>
+        <a class="button" href="https://t.me/LOUTVS/" target="_blank">
+            Join Channel
+        </a>
+    </div>
 
-<section>
-    <h2>Avatar: The Legend of Genji 🈲</h2>
-    <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-04-12_19-21-42.jpg" 
-         alt="Legend of Genji">
-    <br>
-    <a class="button" href="https://t.me/LOGNAU/" target="_blank">
-        Join The Legend of Genji
-    </a>
-</section>
+    <div class="card">
+        <h2>📷 KISH WALLPAPERS</h2>
+        <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-12-24_11-55-10.jpg" 
+             alt="Kish Wallpapers" loading="lazy">
+        <br>
+        <a class="button" href="https://t.me/wallcrafttim/" target="_blank">
+            Join Channel
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>🈲 Avatar: The Legend of Genji</h2>
+        <img src="https://raw.githubusercontent.com/kishchi/kishchi.github.io/main/photo_2022-04-12_19-21-42.jpg" 
+             alt="Legend of Genji" loading="lazy">
+        <br>
+        <a class="button" href="https://t.me/LOGNAU/" target="_blank">
+            Join Channel
+        </a>
+    </div>
+
+    <div class="card">
+        <h2>🎥 The Movie Request Group</h2>
+        <img src="1771251355020.png" 
+             alt="The Movie Request Group" loading="lazy">
+        <br>
+        <a class="button" href="https://t.me/movierequestsg" target="_blank">
+            Join Group
+        </a>
+    </div>
+
+</div>
 
 <footer>
     <p>
-        Thanks for visiting my page 🙏<br>
+        Thanks for visiting 🙏<br>
         Remember to join and share my channels with others!
     </p>
 </footer>
